@@ -126,6 +126,30 @@ def button_smallsize():
     root.geometry("243x330")
 
 
+def button_smile():
+    return
+
+
+def button_ms():
+    return
+
+
+def button_mc():
+    return
+
+
+def button_mPlus():
+    return
+
+
+def button_mMinus():
+    return
+
+
+def button_mr():
+    return
+
+
 def button_2nd():
     return
 
@@ -197,6 +221,32 @@ def button_EE():
     return
 
 
+def button_Rad():
+    return
+
+
+def button_sinh():
+    return
+
+
+def button_cosh():
+    return
+
+
+def button_tanh():
+    return
+
+
+def button_pi():
+    return
+
+
+def button_Rand():
+    return
+
+
+# Create the GUI ------------------------------------------------------------------------------------------------
+
 root = Tk()
 root.title("Christian Bloemhof's Calculator")
 root.resizable(width=False, height=False)
@@ -206,8 +256,9 @@ e = Entry(root)
 e.grid(row=0, column=0, columnspan=4)
 
 
-# Define Buttons
+# Define Buttons ------------------------------------------------------------------------------------------------
 
+# Number Buttons
 button_1 = Button(root, text="1", pady=15, command=lambda: button_click(1))
 button_2 = Button(root, text="2", pady=15, command=lambda: button_click(2))
 button_3 = Button(root, text="3", pady=15, command=lambda: button_click(3))
@@ -220,6 +271,7 @@ button_9 = Button(root, text="9", pady=15, command=lambda: button_click(9))
 button_0 = Button(root, text="0", pady=15, command=lambda: button_click(0))
 button_decimal = Button(root, text=".", pady=15, command=lambda: button_click("."))
 
+# Basic Calculator Mathematics Features
 button_adds    = Button(root, text="+",   pady=15, command=button_add)
 button_subs    = Button(root, text="-",   pady=15, command=button_sub)
 button_mults   = Button(root, text="x",   pady=15, command=button_mult)
@@ -228,8 +280,18 @@ button_equals  = Button(root, text="=",   pady=15, command=button_equal)
 button_clear   = Button(root, text="AC",  pady=15, command=button_clear)
 button_sign    = Button(root, text="+/-", pady=15, command=button_sign)
 button_percent = Button(root, text="%",   pady=15, command=button_percent)
+
+# Buttons to adjust screen size
 button_fullsize  = Button(root, text="Fullsize", pady=15, command=button_fullsize)
 button_smallsize = Button(root, text="Smallsize", pady=15, command=button_smallsize)
+
+# Row 1 Extra Buttons Creation
+button_smile = Button(root, text=":)", pady=15, command=button_smile)
+button_ms = Button(root, text="ms", pady=15, command=button_ms)
+button_mc = Button(root, text="mc", pady=15, command=button_mc)
+button_mPlus = Button(root, text="m+", pady=15, command=button_mPlus)
+button_mMinus = Button(root, text="m-", pady=15, command=button_mMinus)
+button_mr = Button(root, text="mr", pady=15, command=button_mr)
 
 # Row 2 Extra Buttons Creation
 button_2nd = Button(root, text="2nd", pady=15, command=button_2nd)
@@ -255,7 +317,15 @@ button_tan = Button(root, text="tan", pady=15, command=button_tan)
 button_e = Button(root, text="e", pady=15, command=button_e)
 button_EE = Button(root, text="EE", pady=15, command=button_EE)
 
-# Bind the buttons to the keys on the keyboard
+# Row 5 Extra Buttons Creation
+button_Rad = Button(root, text="Rad", pady=15, command=button_Rad)
+button_sinh = Button(root, text="sinh", pady=15, command=button_sinh)
+button_cosh = Button(root, text="cosh", pady=15, command=button_cosh)
+button_tanh = Button(root, text="tanh", pady=15, command=button_tanh)
+button_pi = Button(root, text="π", pady=15, command=button_pi)
+button_Rand = Button(root, text="Rand", pady=15, command=button_Rand)
+
+# Bind the buttons to the keys on the keyboard -------------------------------------------------------------
 
 root.bind('<Key>', key_pressed)
 root.bind('<Return>', button_equal)
@@ -265,7 +335,7 @@ root.bind('<*>', button_mult)
 root.bind('</>', button_div)
 root.bind('<%>', button_percent)
 
-# Put the buttons on the screen in the correct order
+# Put the buttons on the screen in the correct order --------------------------------------------------------
 
 button_fullsize.grid(row=6, column=0, columnspan=4, sticky="ew")
 button_smallsize.grid(row=6, column=4, columnspan=6, padx=(6, 0), sticky="ew")
@@ -296,6 +366,15 @@ button_divs.grid(row=1, column=3, sticky="ew")
 
 # Here's where the hidden buttons are inserted
 
+# Row 1 Extra Buttons Placement
+
+button_smile.grid(row=1, column=9, ipadx=20, sticky="ew")
+button_ms.grid(row=1, column=8, ipadx=20, sticky="ew")
+button_mc.grid(row=1, column=7, ipadx=20, sticky="ew")
+button_mPlus.grid(row=1, column=6, ipadx=20, sticky="ew")
+button_mMinus.grid(row=1, column=5, ipadx=20, sticky="ew")
+button_mr.grid(row=1, column=4, ipadx=20, padx=(6, 0), sticky="ew")
+
 # Row 2 Extra Buttons Placement
 
 button_2nd.grid(row=2, column=9, ipadx=20, sticky="ew")
@@ -322,6 +401,15 @@ button_cos.grid(row=4, column=7, ipadx=20, sticky="ew")
 button_tan.grid(row=4, column=6, ipadx=20, sticky="ew")
 button_e.grid(row=4, column=5, ipadx=20, sticky="ew")
 button_EE.grid(row=4, column=4, ipadx=20, padx=(6, 0), sticky="ew")
+
+# Row 5 Extra Buttons Placement
+
+button_Rad.grid(row=5, column=9, ipadx=20, sticky="ew")
+button_sinh.grid(row=5, column=8, ipadx=20, sticky="ew")
+button_cosh.grid(row=5, column=7, ipadx=20, sticky="ew")
+button_tanh.grid(row=5, column=6, ipadx=20, sticky="ew")
+button_pi.grid(row=5, column=5, ipadx=20, sticky="ew")
+button_Rand.grid(row=5, column=4, ipadx=20, padx=(6, 0), sticky="ew")
 
 
 root.mainloop()
