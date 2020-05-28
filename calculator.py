@@ -126,6 +126,10 @@ def button_smallsize():
     root.geometry("243x330")
 
 
+def button_2nd():
+    return
+
+
 def button_squared():
     num = e.get()
     e.delete(0, END)
@@ -142,6 +146,54 @@ def button_exponential():
 
 
 def button_tenExpo():
+    return
+
+
+def button_inverse():
+    return
+
+
+def button_squareRoot():
+    return
+
+
+def button_cubeRoot():
+    return
+
+
+def button_expoRoot():
+    return
+
+
+def button_natLog():
+    return
+
+
+def button_log():
+    return
+
+
+def button_factorial():
+    return
+
+
+def button_sin():
+    return
+
+
+def button_cos():
+    return
+
+
+def button_tan():
+    return
+
+
+def button_e():
+    return
+
+
+def button_EE():
     return
 
 
@@ -179,11 +231,29 @@ button_percent = Button(root, text="%",   pady=15, command=button_percent)
 button_fullsize  = Button(root, text="Fullsize", pady=15, command=button_fullsize)
 button_smallsize = Button(root, text="Smallsize", pady=15, command=button_smallsize)
 
+# Row 2 Extra Buttons Creation
+button_2nd = Button(root, text="2nd", pady=15, command=button_2nd)
 button_squared = Button(root, text="x^2", pady=15, command=button_squared)
 button_cubed = Button(root, text="x^3", pady=15, command=button_cubed)
 button_exponential = Button(root, text="x^y", pady=15, command=button_exponential)
 button_eExpo = Button(root, text="e^x", pady=15, command=button_exponential)
 button_tenExpo = Button(root, text="10^x", pady=15, command=button_tenExpo)
+
+# Row 3 Extra Buttons Creation
+button_inverse = Button(root, text="1/x", pady=15, command=button_inverse)
+button_squareRoot = Button(root, text="2√x", pady=15, command=button_squareRoot)
+button_cubeRoot = Button(root, text="3√x", pady=15, command=button_cubeRoot)
+button_expoRoot = Button(root, text="y√x", pady=15, command=button_expoRoot)
+button_natLog = Button(root, text="ln", pady=15, command=button_natLog)
+button_log = Button(root, text="log_10", pady=15, command=button_log)
+
+# Row 4 Extra Buttons Creation
+button_factorial = Button(root, text="x!", pady=15, command=button_factorial)
+button_sin = Button(root, text="sin", pady=15, command=button_sin)
+button_cos = Button(root, text="cos", pady=15, command=button_cos)
+button_tan = Button(root, text="tan", pady=15, command=button_tan)
+button_e = Button(root, text="e", pady=15, command=button_e)
+button_EE = Button(root, text="EE", pady=15, command=button_EE)
 
 # Bind the buttons to the keys on the keyboard
 
@@ -226,10 +296,32 @@ button_divs.grid(row=1, column=3, sticky="ew")
 
 # Here's where the hidden buttons are inserted
 
+# Row 2 Extra Buttons Placement
+
+button_2nd.grid(row=2, column=9, ipadx=20, sticky="ew")
 button_squared.grid(row=2, column=8, ipadx=20, sticky="ew")
 button_cubed.grid(row=2, column=7, ipadx=20, sticky="ew")
 button_exponential.grid(row=2, column=6, ipadx=20, sticky="ew")
 button_eExpo.grid(row=2, column=5, ipadx=20, sticky="ew")
 button_tenExpo.grid(row=2, column=4, ipadx=20, padx=(6, 0), sticky="ew")
+
+# Row 3 Extra Buttons Placement
+
+button_inverse.grid(row=3, column=9, ipadx=20, sticky="ew")
+button_squareRoot.grid(row=3, column=8, ipadx=20, sticky="ew")
+button_cubeRoot.grid(row=3, column=7, ipadx=20, sticky="ew")
+button_expoRoot.grid(row=3, column=6, ipadx=20, sticky="ew")
+button_natLog.grid(row=3, column=5, ipadx=20, sticky="ew")
+button_log.grid(row=3, column=4, ipadx=15, padx=(6, 0), sticky="ew")
+
+# Row 4 Extra Buttons Placement
+
+button_factorial.grid(row=4, column=9, ipadx=20, sticky="ew")
+button_sin.grid(row=4, column=8, ipadx=20, sticky="ew")
+button_cos.grid(row=4, column=7, ipadx=20, sticky="ew")
+button_tan.grid(row=4, column=6, ipadx=20, sticky="ew")
+button_e.grid(row=4, column=5, ipadx=20, sticky="ew")
+button_EE.grid(row=4, column=4, ipadx=20, padx=(6, 0), sticky="ew")
+
 
 root.mainloop()
