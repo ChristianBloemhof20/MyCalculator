@@ -119,11 +119,30 @@ def key_pressed(event):
 
 
 def button_fullsize():
-    root.geometry("400x330")
+    root.geometry("700x330")
 
 
 def button_smallsize():
     root.geometry("243x330")
+
+
+def button_squared():
+    num = e.get()
+    e.delete(0, END)
+    num = float(num)**2
+    check_float(num)
+
+
+def button_cubed():
+    return
+
+
+def button_exponential():
+    return
+
+
+def button_tenExpo():
+    return
 
 
 root = Tk()
@@ -160,6 +179,12 @@ button_percent = Button(root, text="%",   pady=15, command=button_percent)
 button_fullsize  = Button(root, text="Fullsize", pady=15, command=button_fullsize)
 button_smallsize = Button(root, text="Smallsize", pady=15, command=button_smallsize)
 
+button_squared = Button(root, text="x^2", pady=15, command=button_squared)
+button_cubed = Button(root, text="x^3", pady=15, command=button_cubed)
+button_exponential = Button(root, text="x^y", pady=15, command=button_exponential)
+button_eExpo = Button(root, text="e^x", pady=15, command=button_exponential)
+button_tenExpo = Button(root, text="10^x", pady=15, command=button_tenExpo)
+
 # Bind the buttons to the keys on the keyboard
 
 root.bind('<Key>', key_pressed)
@@ -171,6 +196,9 @@ root.bind('</>', button_div)
 root.bind('<%>', button_percent)
 
 # Put the buttons on the screen in the correct order
+
+button_fullsize.grid(row=6, column=0, columnspan=4, sticky="ew")
+button_smallsize.grid(row=6, column=4, columnspan=6, padx=(6, 0), sticky="ew")
 
 button_0.grid(row=5, column=0, columnspan=2, ipadx=50, sticky="ew")
 button_decimal.grid(row=5, column=2, ipadx=25, sticky="ew")
@@ -194,9 +222,14 @@ button_mults.grid(row=2, column=3, ipadx=20, sticky="ew")
 button_clear.grid(row=1, column=0, ipadx=15, sticky="ew")
 button_sign.grid(row=1, column=1, ipadx=15, sticky="ew")
 button_percent.grid(row=1, column=2, ipadx=20, sticky="ew")
-button_divs.grid(row=1, column=3, ipadx=20, sticky="ew")
+button_divs.grid(row=1, column=3, sticky="ew")
 
-button_fullsize.grid(row=6, column=0)
-button_smallsize.grid(row=6, column=1)
+# Here's where the hidden buttons are inserted
+
+button_squared.grid(row=2, column=8, ipadx=20, sticky="ew")
+button_cubed.grid(row=2, column=7, ipadx=20, sticky="ew")
+button_exponential.grid(row=2, column=6, ipadx=20, sticky="ew")
+button_eExpo.grid(row=2, column=5, ipadx=20, sticky="ew")
+button_tenExpo.grid(row=2, column=4, ipadx=20, padx=(6, 0), sticky="ew")
 
 root.mainloop()
