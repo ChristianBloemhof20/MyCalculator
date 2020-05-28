@@ -5,6 +5,7 @@
 # Since the mac version of tkinter does not support the changing of button colors, buttons will remain default color
 
 from tkinter import *
+from math import *
 
 
 def button_click(number):
@@ -127,7 +128,8 @@ def button_smallsize():
 
 
 def button_smile():
-    return
+    e.delete(0, END)
+    e.insert(0, 43770)
 
 
 def button_ms():
@@ -162,15 +164,28 @@ def button_squared():
 
 
 def button_cubed():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = float(num)**3
+    check_float(num)
 
 
 def button_exponential():
     return
 
 
+def button_eExpo():
+    num = e.get()
+    e.delete(0, END)
+    num = exp(int(num))
+    check_float(num)
+
+
 def button_tenExpo():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = pow(10, int(num))
+    check_float(num)
 
 
 def button_inverse():
@@ -298,7 +313,7 @@ button_2nd = Button(root, text="2nd", pady=15, command=button_2nd)
 button_squared = Button(root, text="x^2", pady=15, command=button_squared)
 button_cubed = Button(root, text="x^3", pady=15, command=button_cubed)
 button_exponential = Button(root, text="x^y", pady=15, command=button_exponential)
-button_eExpo = Button(root, text="e^x", pady=15, command=button_exponential)
+button_eExpo = Button(root, text="e^x", pady=15, command=button_eExpo)
 button_tenExpo = Button(root, text="10^x", pady=15, command=button_tenExpo)
 
 # Row 3 Extra Buttons Creation
