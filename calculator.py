@@ -118,8 +118,18 @@ def key_pressed(event):
         button_click(event.keysym)
 
 
+def button_fullsize():
+    root.geometry("400x330")
+
+
+def button_smallsize():
+    root.geometry("243x330")
+
+
 root = Tk()
 root.title("Christian Bloemhof's Calculator")
+root.resizable(width=False, height=False)
+root.geometry("243x330")
 
 e = Entry(root)
 e.grid(row=0, column=0, columnspan=4)
@@ -147,6 +157,8 @@ button_equals  = Button(root, text="=",   pady=15, command=button_equal)
 button_clear   = Button(root, text="AC",  pady=15, command=button_clear)
 button_sign    = Button(root, text="+/-", pady=15, command=button_sign)
 button_percent = Button(root, text="%",   pady=15, command=button_percent)
+button_fullsize  = Button(root, text="Fullsize", pady=15, command=button_fullsize)
+button_smallsize = Button(root, text="Smallsize", pady=15, command=button_smallsize)
 
 # Bind the buttons to the keys on the keyboard
 
@@ -183,5 +195,8 @@ button_clear.grid(row=1, column=0, ipadx=15, sticky="ew")
 button_sign.grid(row=1, column=1, ipadx=15, sticky="ew")
 button_percent.grid(row=1, column=2, ipadx=20, sticky="ew")
 button_divs.grid(row=1, column=3, ipadx=20, sticky="ew")
+
+button_fullsize.grid(row=6, column=0)
+button_smallsize.grid(row=6, column=1)
 
 root.mainloop()
