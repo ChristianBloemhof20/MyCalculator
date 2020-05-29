@@ -6,6 +6,7 @@
 
 from tkinter import *
 from math import *
+from random import random
 
 
 def button_click(number):
@@ -177,27 +178,36 @@ def button_exponential():
 def button_eExpo():
     num = e.get()
     e.delete(0, END)
-    num = exp(int(num))
+    num = exp(float(num))
     check_float(num)
 
 
 def button_tenExpo():
     num = e.get()
     e.delete(0, END)
-    num = pow(10, int(num))
+    num = pow(10, float(num))
     check_float(num)
 
 
 def button_inverse():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = 1/float(num)
+    check_float(num)
 
 
 def button_squareRoot():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = sqrt(float(num))
+    check_float(num)
 
 
 def button_cubeRoot():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = pow(float(num), 1/3)
+    check_float(num)
 
 
 def button_expoRoot():
@@ -205,27 +215,45 @@ def button_expoRoot():
 
 
 def button_natLog():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = log(float(num), exp(1))
+    check_float(num)
 
 
 def button_log():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = log(float(num), 10)
+    check_float(num)
 
 
 def button_factorial():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = factorial(float(num))
+    check_float(num)
 
 
 def button_sin():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = sin(float(num))
+    check_float(num)
 
 
 def button_cos():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = cos(float(num))
+    check_float(num)
 
 
 def button_tan():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = tan(float(num))
+    check_float(num)
 
 
 def button_e():
@@ -241,23 +269,34 @@ def button_Rad():
 
 
 def button_sinh():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = sinh(float(num))
+    check_float(num)
 
 
 def button_cosh():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = cosh(float(num))
+    check_float(num)
 
 
 def button_tanh():
-    return
+    num = e.get()
+    e.delete(0, END)
+    num = tanh(float(num))
+    check_float(num)
 
 
 def button_pi():
-    return
+    e.delete(0, END)
+    e.insert(0, pi)
 
 
 def button_Rand():
-    return
+    e.delete(0, END)
+    e.insert(0, random())
 
 
 # Create the GUI ------------------------------------------------------------------------------------------------
