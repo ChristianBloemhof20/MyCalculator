@@ -8,6 +8,8 @@ from tkinter import *
 from math import *
 from random import random
 
+global memory
+memory = 0
 
 def button_click(number):
     current = e.get()
@@ -100,6 +102,14 @@ def button_equal(self="NONE"):
             except ZeroDivisionError:
                 e.insert(0, "Not a number")
 
+        elif math == "expo":
+            num = pow(f_num, float(second_number))
+            check_float(num)
+
+        elif math == "root":
+            num = pow(f_num, 1/float(second_number))
+            check_float(num)
+
     except NameError:
         e.insert(0, second_number)
 
@@ -134,23 +144,34 @@ def button_smile():
 
 
 def button_ms():
-    return
+    global memory
+    memory = e.get()
 
 
 def button_mc():
-    return
+    global memory
+    memory = 0
+    e.delete(0, END)
+    e.insert(0, 0)
 
 
 def button_mPlus():
-    return
+    global memory
+    memory = float(memory) + float(e.get())
+    e.delete(0, END)
+    check_float(memory)
 
 
 def button_mMinus():
-    return
+    global memory
+    memory = float(memory) - float(e.get())
+    e.delete(0, END)
+    check_float(memory)
 
 
 def button_mr():
-    return
+    e.delete(0, END)
+    check_float(float(memory))
 
 
 def button_2nd():
@@ -172,7 +193,12 @@ def button_cubed():
 
 
 def button_exponential():
-    return
+    first_number = e.get()
+    global f_num
+    global math
+    math = "expo"
+    f_num = float(first_number)
+    e.delete(0, END)
 
 
 def button_eExpo():
@@ -211,7 +237,12 @@ def button_cubeRoot():
 
 
 def button_expoRoot():
-    return
+    first_number = e.get()
+    global f_num
+    global math
+    math = "root"
+    f_num = float(first_number)
+    e.delete(0, END)
 
 
 def button_natLog():
@@ -257,7 +288,8 @@ def button_tan():
 
 
 def button_e():
-    return
+    e.delete(0, END)
+    e.insert(0, exp(1))
 
 
 def button_EE():
