@@ -4,12 +4,18 @@
 # This calculator is to look and act similarly to the calculator built into the Macbook
 # Since the mac version of tkinter does not support the changing of button colors, buttons will remain default color
 
-from tkinter import *
+# API key: 9edec1cfeeedb9c0d42474a34ace0b48
+# API Information: api.openweathermap.org/data/2.5/weather?zip={zip code},{country code}&appid={your api key}
+
 from math import *
 from random import random
+from tkinter import *
+import requests
+import json
 
-global memory
+second = 0
 memory = 0
+
 
 def button_click(number):
     current = e.get()
@@ -174,10 +180,6 @@ def button_mr():
     check_float(float(memory))
 
 
-def button_2nd():
-    return
-
-
 def button_squared():
     num = e.get()
     e.delete(0, END)
@@ -331,7 +333,67 @@ def button_Rand():
     e.insert(0, random())
 
 
-# Create the GUI ------------------------------------------------------------------------------------------------
+def city_name():
+    name = city_entry.get()
+
+    api_request = requests.get("http://api.openweathermap.org/data/2.5/weather?q=" + name +
+                               "&appid=9edec1cfeeedb9c0d42474a34ace0b48")
+    api = json.loads(api_request.content)
+    temperature = api["main"]["temp"]
+    farenheit = ((temperature - 273.15)*(9/5)) + 32
+    e.insert(0, "{:.2f}".format(farenheit))
+
+    window.destroy()
+
+
+
+def weather():
+    e.delete(0, END)
+
+    try:
+        global window
+        global city_entry
+
+        window = Tk()
+        window.title("Enter your city name")
+        window.resizable(width=False, height=False)
+
+        city_label = Label(window, text="Enter your city name:")
+        city_entry = Entry(window)
+        submit_button = Button(window, text="Submit", pady=10, command=city_name)
+
+        city_label.grid(row=0, column=0)
+        city_entry.grid(row=0, column=1)
+        submit_button.grid(row=1, column=0, columnspan=2, sticky="ew")
+
+    except:
+        e.insert(0, "Error, check spelling")
+
+
+def change_buttons():
+    return
+
+
+def button_2nd():
+    global second
+
+    if second == 0:
+        second = 1
+
+        button_weather = Button(root, text="Weather", pady=15, width=0, command=weather)
+        button_weather.grid(row=5, column=4, columnspan=2, padx=(6, 0), sticky="ew")
+
+    else:
+        second = 0
+
+        button_pi_second = Button(root, text="π", pady=15, command=button_pi)
+        button_Rand_second = Button(root, text="Rand", pady=15, command=button_Rand)
+
+        button_pi_second.grid(row=5, column=5, ipadx=20, sticky="ew")
+        button_Rand_second.grid(row=5, column=4, ipadx=20, padx=(6, 0), sticky="ew")
+
+
+# Create the frame for the Calculator GUI
 
 root = Tk()
 root.title("Christian Bloemhof's Calculator")
