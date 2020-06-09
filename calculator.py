@@ -13,17 +13,30 @@ from tkinter import *
 import requests
 import json
 
+global click
+click = 0
+
 second = 0
 memory = 0
 
 
 def button_click(number):
-    current = e.get()
-    e.delete(0, END)
-    e.insert(0, str(current) + str(number))
+    global click
+
+    if click == 0:
+        current = e.get()
+        e.delete(0, END)
+        e.insert(0, str(current) + str(number))
+    else:
+        e.delete(0, END)
+        e.insert(0, str(number))
+        click = 0
 
 
 def button_clear():
+    global click
+    click = 0
+
     e.delete(0, END)
 
 
@@ -32,6 +45,7 @@ def button_add(self="NONE"):
     global f_num
     global math
     global math_count
+    global click
     math_count = 0
     math = "add"
     f_num = float(first_number)
@@ -86,6 +100,9 @@ def button_percent(self="NONE"):
 
 
 def button_equal(self="NONE"):
+    global click
+    click = 1
+
     second_number = e.get()
     e.delete(0, END)
     try:
@@ -145,17 +162,26 @@ def button_smallsize():
 
 
 def button_smile():
+    global click
+    click = 1
+
     e.delete(0, END)
     e.insert(0, 43770)
 
 
 def button_ms():
     global memory
+    global click
+    click = 1
+
     memory = e.get()
 
 
 def button_mc():
     global memory
+    global click
+    click = 1
+
     memory = 0
     e.delete(0, END)
     e.insert(0, 0)
@@ -163,6 +189,9 @@ def button_mc():
 
 def button_mPlus():
     global memory
+    global click
+    click = 1
+
     memory = float(memory) + float(e.get())
     e.delete(0, END)
     check_float(memory)
@@ -170,17 +199,26 @@ def button_mPlus():
 
 def button_mMinus():
     global memory
+    global click
+    click = 1
+
     memory = float(memory) - float(e.get())
     e.delete(0, END)
     check_float(memory)
 
 
 def button_mr():
+    global click
+    click = 1
+
     e.delete(0, END)
     check_float(float(memory))
 
 
 def button_squared():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = float(num)**2
@@ -188,6 +226,9 @@ def button_squared():
 
 
 def button_cubed():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = float(num)**3
@@ -204,6 +245,9 @@ def button_exponential():
 
 
 def button_eExpo():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = exp(float(num))
@@ -211,6 +255,9 @@ def button_eExpo():
 
 
 def button_tenExpo():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = pow(10, float(num))
@@ -218,6 +265,9 @@ def button_tenExpo():
 
 
 def button_inverse():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = 1/float(num)
@@ -225,6 +275,9 @@ def button_inverse():
 
 
 def button_squareRoot():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = sqrt(float(num))
@@ -232,6 +285,9 @@ def button_squareRoot():
 
 
 def button_cubeRoot():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = pow(float(num), 1/3)
@@ -248,6 +304,9 @@ def button_expoRoot():
 
 
 def button_natLog():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = log(float(num), exp(1))
@@ -255,6 +314,9 @@ def button_natLog():
 
 
 def button_log():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = log(float(num), 10)
@@ -262,6 +324,9 @@ def button_log():
 
 
 def button_factorial():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = factorial(float(num))
@@ -269,6 +334,9 @@ def button_factorial():
 
 
 def button_sin():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = sin(float(num))
@@ -276,6 +344,9 @@ def button_sin():
 
 
 def button_cos():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = cos(float(num))
@@ -283,6 +354,9 @@ def button_cos():
 
 
 def button_tan():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = tan(float(num))
@@ -290,6 +364,9 @@ def button_tan():
 
 
 def button_e():
+    global click
+    click = 1
+
     e.delete(0, END)
     e.insert(0, exp(1))
 
@@ -303,6 +380,9 @@ def button_Rad():
 
 
 def button_sinh():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = sinh(float(num))
@@ -310,6 +390,9 @@ def button_sinh():
 
 
 def button_cosh():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = cosh(float(num))
@@ -317,6 +400,9 @@ def button_cosh():
 
 
 def button_tanh():
+    global click
+    click = 1
+
     num = e.get()
     e.delete(0, END)
     num = tanh(float(num))
@@ -324,11 +410,17 @@ def button_tanh():
 
 
 def button_pi():
+    global click
+    click = 1
+
     e.delete(0, END)
     e.insert(0, pi)
 
 
 def button_Rand():
+    global click
+    click = 1
+
     e.delete(0, END)
     e.insert(0, random())
 
@@ -344,7 +436,6 @@ def city_name():
     e.insert(0, "{:.2f}".format(farenheit))
 
     window.destroy()
-
 
 
 def weather():
