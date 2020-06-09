@@ -44,45 +44,53 @@ def button_clear():
 
 def button_add(self="NONE"):
     first_number = e.get()
+
     global f_num
     global math
     global math_count
     global click
     math_count = 0
     math = "add"
+
     f_num = float(first_number)
     e.delete(0, END)
 
 
 def button_sub(self="NONE"):
     first_number = e.get()
+
     global f_num
     global math
     global math_count
     math_count = 0
     math = "sub"
+
     f_num = float(first_number)
     e.delete(0, END)
 
 
 def button_mult(self="NONE"):
     first_number = e.get()
+
     global f_num
     global math
     global math_count
     math_count = 0
     math = "mult"
+
     f_num = float(first_number)
     e.delete(0, END)
 
 
 def button_div(self="NONE"):
     first_number = e.get()
+
     global f_num
     global math
     global math_count
     math_count = 0
     math = "div"
+
     f_num = float(first_number)
     e.delete(0, END)
 
@@ -103,6 +111,8 @@ def button_percent(self="NONE"):
 
 def button_equal(self="NONE"):
     global click
+    global math_count
+    global f_num
     click = 1
 
     second_number = e.get()
@@ -111,29 +121,67 @@ def button_equal(self="NONE"):
         if math == "add":
             num = f_num + float(second_number)
             check_float(num)
+            if math_count == 0:
+                math_count = 1
+                f_num = float(second_number)
 
         elif math == "sub":
-            num = f_num - float(second_number)
-            check_float(num)
+            if math_count == 0:
+                num = f_num - float(second_number)
+                check_float(num)
+
+                math_count = 1
+                f_num = float(second_number)
+            else:
+                num = float(second_number) - f_num
+                check_float(num)
 
         elif math == "mult":
             num = f_num * float(second_number)
             check_float(num)
+            if math_count == 0:
+                math_count = 1
+                f_num = float(second_number)
 
         elif math == "div":
             try:
-                num = f_num / float(second_number)
-                check_float(num)
+                if math_count == 0:
+                    num = f_num / float(second_number)
+                    check_float(num)
+
+                    math_count = 1
+                    f_num = float(second_number)
+
+                else:
+                    num = float(second_number) / f_num
+                    check_float(num)
+
             except ZeroDivisionError:
                 e.insert(0, "Not a number")
 
         elif math == "expo":
-            num = pow(f_num, float(second_number))
-            check_float(num)
+            if math_count == 0:
+                num = pow(f_num, float(second_number))
+                check_float(num)
+
+                math_count = 1
+                f_num = float(second_number)
+
+            else:
+                num = pow(float(second_number), f_num)
+                check_float(num)
 
         elif math == "root":
-            num = pow(f_num, 1/float(second_number))
-            check_float(num)
+            if math_count == 0:
+                num = pow(f_num, 1/float(second_number))
+                check_float(num)
+
+                math_count = 1
+                f_num = float(second_number)
+
+            else:
+                num = pow(float(second_number), 1 / f_num)
+                check_float(num)
 
     except NameError:
         e.insert(0, second_number)
@@ -241,9 +289,13 @@ def button_cubed():
 
 def button_exponential():
     first_number = e.get()
+
     global f_num
     global math
+    global math_count
+    math_count = 0
     math = "expo"
+
     f_num = float(first_number)
     e.delete(0, END)
 
@@ -300,9 +352,13 @@ def button_cubeRoot():
 
 def button_expoRoot():
     first_number = e.get()
+
     global f_num
     global math
+    global math_count
+    math_count = 0
     math = "root"
+
     f_num = float(first_number)
     e.delete(0, END)
 
