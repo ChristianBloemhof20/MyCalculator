@@ -14,7 +14,9 @@ import requests
 import json
 
 global click
+global resize
 click = 0
+resize = 0
 
 second = 0
 memory = 0
@@ -153,12 +155,14 @@ def key_pressed(event):
         button_click(event.keysym)
 
 
-def button_fullsize():
-    root.geometry("700x330")
-
-
-def button_smallsize():
-    root.geometry("243x330")
+def button_resize():
+    global resize
+    if resize == 0:
+        root.geometry("700x330")
+        resize = 1
+    else:
+        root.geometry("243x330")
+        resize = 0
 
 
 def button_smile():
@@ -521,8 +525,7 @@ button_sign    = Button(root, text="+/-", pady=15, command=button_sign)
 button_percent = Button(root, text="%",   pady=15, command=button_percent)
 
 # Buttons to adjust screen size
-button_fullsize  = Button(root, text="Fullsize", pady=15, command=button_fullsize)
-button_smallsize = Button(root, text="Smallsize", pady=15, command=button_smallsize)
+button_resize  = Button(root, text="Resize", pady=15, command=button_resize)
 
 # Row 1 Extra Buttons Creation
 button_smile = Button(root, text=":)", pady=15, command=button_smile)
@@ -576,8 +579,7 @@ root.bind('<%>', button_percent)
 
 # Put the buttons on the screen in the correct order --------------------------------------------------------
 
-button_fullsize.grid(row=6, column=0, columnspan=4, sticky="ew")
-button_smallsize.grid(row=6, column=4, columnspan=6, padx=(6, 0), sticky="ew")
+button_resize.grid(row=6, column=0, columnspan=4, sticky="ew")
 
 button_0.grid(row=5, column=0, columnspan=2, ipadx=50, sticky="ew")
 button_decimal.grid(row=5, column=2, ipadx=25, sticky="ew")
